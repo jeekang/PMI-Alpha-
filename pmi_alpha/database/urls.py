@@ -20,6 +20,7 @@ urlpatterns = [
    url(r'^add_partner/$', views.add_partner, name= 'add partner'),
    url(r'^add_department/$', views.add_department, name= 'add department'),
    url(r'^add_poc/$', views.add_poc, name= 'add poc'),
+   url(r'^add_record/$', views.add_record, name= 'add record'),
 
 
 
