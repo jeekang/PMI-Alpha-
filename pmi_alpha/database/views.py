@@ -208,6 +208,9 @@ def add_record(request):
 def dashboard(request):
     return render(request, 'database/dashboard.html', {})
 
+def basic_search(request):
+    return render(request, 'database/basic_search.html', {})
 
-
+def advanced_search(request):
+    return render(request, 'database/advanced_search.html', {})
 

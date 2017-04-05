@@ -28,6 +28,8 @@ urlpatterns = [
 
 
    url(r'^dashboard/$', views.dashboard, name= 'dashboard'),
+   url(r'^basic_search/$', views.basic_search, name= 'basic search'),
+   url(r'^advanced_search/$', views.advanced_search, name= 'advanced search'),
 
 
 
