@@ -17,8 +17,6 @@ CTYPE = (
 	('F','FFP'),
 
 	)
-
-# REMINDER: python manage.py buildwatson whenever you add stuff to models.
 class Vendor(models.Model):
 
 	def get_absolute_url(self):
@@ -145,10 +143,6 @@ class Employee(models.Model):
 
 
 class GoogleGroup(models.Model):
-	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('googlegroup_detail', args=[str(self.id)])
-
 	def __str__(self):
 		return self.Name
 
@@ -163,10 +157,6 @@ class GoogleGroup(models.Model):
 	Admin = models.CharField(_("Admin"), max_length = 50, default = None)
 
 class Partner(models.Model):
-	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('partner_detail', args=[str(self.id)])
-
 	def __str__(self):
 		return self.LegalName
 
@@ -174,7 +164,6 @@ class Partner(models.Model):
 		for field in self._meta.get_fields(include_parents=True, include_hidden=False):
 			value = getattr(self, field.name, None)
 			yield (field, value)
-
 	LegalName = models.CharField(_("Legal Name"), max_length = 50, default = None)
 
 	Address = models.CharField(_("Address"), max_length = 50, default = None)
@@ -194,11 +183,6 @@ class Partner(models.Model):
 
 
 class Customer(models.Model):
-
-	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('customer_detail', args=[str(self.id)])
-
 	def __str__(self):
    		return self.LegalName
 
@@ -228,11 +212,6 @@ class Customer(models.Model):
 	TIN = models.CharField(_("TIN"), max_length=11, default = None)
 
 class Contract(models.Model):
-
-	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('contract_detail', args=[str(self.id)])
-
 	def __str__(self):
    		return self.ContractNumber
 
@@ -270,11 +249,6 @@ class Contract(models.Model):
 
 
 class Department(models.Model):
-
-	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('department_detail', args=[str(self.id)])
-
 	def __str__(self):
    		return self.Name
 
@@ -294,11 +268,6 @@ class Department(models.Model):
 	Phone = models.CharField(_("Phone"), max_length = 50, default = None)
 
 class POC(models.Model):
-
-	def get_absolute_url(self):
-		from django.urls import reverse
-		return reverse('poc_detail', args=[str(self.id)])
-
 	def __str__(self):
    		return self.FName + " " + self.LName
 
