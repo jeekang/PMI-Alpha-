@@ -202,6 +202,9 @@ class POCListFormHelper(FormHelper):
                     'PartnerID',
                     'ContractID',
                     'CustomerID',
+                    'Address',
+                    'Phone',
+                    'Email',
 
                 ),
               Submit('submit', 'Apply Filter'),
