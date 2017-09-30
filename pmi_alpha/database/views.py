@@ -12,6 +12,9 @@ from django.views.generic import TemplateView
 from django_tables2 import SingleTableView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from dal import autocomplete
+
+import json
 
 #Detail Views -> Shows detailed Object Info from table.
 class Vendor_DetailView(PermissionRequiredMixin,generic.DetailView):
@@ -217,7 +220,7 @@ def add_department(request):
     }
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('/database/')
+        return HttpResponseRedirect('/database/dashboard/')
 
 
     return render(request, 'database/add_new.html', context)
@@ -327,6 +330,7 @@ class CustomerListView(PermissionRequiredMixin,TemplateView):
         context['filter'] = filter
         context['table'] = table
         return context
+        
 class ContractListView(PermissionRequiredMixin,TemplateView):
     permission_required = 'database.Contract'
     template_name = 'database/searchable.html'
@@ -394,3 +398,12 @@ class POCListView(PermissionRequiredMixin,TemplateView):
         context['filter'] = filter
         context['table'] = table
         return context
+
+#class DepartmentAutocomplete(autocomplete.Select2QuerySetView):
+    # autocomplete function for ProfessionalDevelopment class
+ ##
+   #     qs = Department.objects.all()
+#
+ #       if self.q:
+  ##
+    #    return qs
