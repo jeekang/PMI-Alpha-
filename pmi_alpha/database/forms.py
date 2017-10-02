@@ -9,7 +9,7 @@ from .models import *
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, HTML
 from crispy_forms.bootstrap import InlineField, FormActions, StrictButton
-
+from dal import autocomplete
 
 class VendorForm(forms.ModelForm):
     class Meta:
@@ -51,6 +51,7 @@ class ContractForm(forms.ModelForm):
         fields = '__all__'
 
 class DepartmentForm(forms.ModelForm):
+
     class Meta:
 
         model = Department
@@ -146,7 +147,15 @@ class ContractListFormHelper(FormHelper):
                     '<i class="fa fa-search"></i> Search Contract Records',       
                     'IssuingCompany',
                     'ContractNumber',
-
+                    'DocumentLocation',
+                    'OrganizationType',
+                    'CustomerID'
+                    'POC',
+                    'EffectiveDate',
+                    'EndDate',
+                    'StartDate',
+                    'Status',
+                    'Comments',
                 ),
               Submit('submit', 'Apply Filter'),
     )
@@ -175,7 +184,10 @@ class DepartmentListFormHelper(FormHelper):
                     'ContractID',
                     'CustomerID',
                     'Name',
-                    'Supervisor'
+                    'Location',
+                    'Fax',
+                    'Supervisor',
+                    'Phone',
 
                 ),
               Submit('submit', 'Apply Filter'),
@@ -194,6 +206,9 @@ class POCListFormHelper(FormHelper):
                     'PartnerID',
                     'ContractID',
                     'CustomerID',
+                    'Address',
+                    'Phone',
+                    'Email',
 
                 ),
               Submit('submit', 'Apply Filter'),
