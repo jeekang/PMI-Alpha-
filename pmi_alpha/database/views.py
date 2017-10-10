@@ -129,6 +129,121 @@ def getC(request):
   mimetype = 'application/json'
   return HttpResponse(data, mimetype)
 
+#POC model
+def getFN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    FN = POC.objects.order_by('FName').filter(FName__istartswith=q)
+    results = []
+    for fn in FN:
+        FN_json = {}
+        FN_json['value'] = fn.FName
+        if FN_json not in results:
+            results.append(FN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getLN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    LN = POC.objects.order_by('LName').filter(LName__istartswith=q)
+    results = []
+    for ln in LN:
+        LN_json = {}
+        LN_json['value'] = ln.LName
+        if LN_json not in results:
+            results.append(LN_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getA(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    A = POC.objects.order_by('Address').filter(Address__istartswith=q)
+    results = []
+    for a in A:
+        A_json = {}
+        A_json['value'] = a.Address
+        if A_json not in results:
+            results.append(A_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getP(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    P = POC.objects.order_by('Phone').filter(Phone__istartswith=q)
+    results = []
+    for p in P:
+        P_json = {}
+        P_json['value'] = p.Phone
+        if P_json not in results:
+            results.append(P_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getE(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    E = POC.objects.order_by('Email').filter(Email__istartswith=q)
+    results = []
+    for e in E:
+        E_json = {}
+        E_json['value'] = e.Email
+        if E_json not in results:
+            results.append(E_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+#GG model
+def getN(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    N = GoogleGroup.objects.order_by('Name').filter(Name__istartswith=q)
+    results = []
+    for n in N:
+        N_json = {}
+        N_json['value'] = n.Name
+        if N_json not in results:
+            results.append(N_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+def getAD(request):
+  if request.is_ajax():
+    q = request.GET.get('term', '')
+    AD = GoogleGroup.objects.order_by('Admin').filter(Admin__istartswith=q)
+    results = []
+    for ad in AD:
+        AD_json = {}
+        AD_json['value'] = ad.Admin
+        if AD_json not in results:
+            results.append(AD_json)
+    data = json.dumps(results)
+  else:
+    data = 'fail'
+  mimetype = 'application/json'
+  return HttpResponse(data, mimetype)
+
+
 #Partner model
 def getLN(request):
     if request.is_ajax():

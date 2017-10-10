@@ -62,6 +62,17 @@ urlpatterns = [
     url(r'^Contracts/getPOC/$', views.getPOC, name='get_POC'),
     url(r'^Contracts/getS/$', views.getS, name='get_S'),
     url(r'^Contracts/getC/$', views.getC, name='get_C'),
+
+    #AutoComplete for POC
+    url(r'^POCs/getFN/$', views.getFN, name='get_FN'),
+    url(r'^POCs/getLN/$', views.getLN, name='get_LN'),
+    url(r'^POCs/getA/$', views.getA, name='get_A'),
+    url(r'^POCs/getP/$', views.getP, name='get_P'),
+    url(r'^POCs/getE/$', views.getE, name='get_E'),
+
+    # AutoComplete for GG
+    url(r'^GoogleGroups/getN/$', views.getN, name='get_N'),
+    url(r'^GoogleGroups/getAD/$', views.getAD, name='get_AD'),
                
     #AutoComplete for Partner
     url(r'^Partner/getLN/$', views.getLN, name='get_LN'),
@@ -79,5 +90,7 @@ urlpatterns = [
     url(r'^Partner/getPPOC/$', views.getPPOC, name='get_PPOC'),
     url(r'^Partner/getTIN/$', views.getTIN, name='get_TIN'),
     url(r'^Partner/getTYPE/$', views.getTYPE, name='get_TYPE'),
+
+
 
 ]

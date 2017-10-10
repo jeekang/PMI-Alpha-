@@ -116,13 +116,44 @@ class GGListFormHelper(FormHelper):
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
-         Fieldset(
-                    '<i class="fa fa-search"></i> Search Google Group Records',       
-                    'Name',
-                    'Admin'
-                ),
-              Submit('submit', 'Apply Filter'),
+        Fieldset('<i class="fa fa-search"></i> Search Google Group Records'),
+
+        HTML("""
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+            <div class="ui-widget">
+                {{filter.form.as_p}}
+                <button type="submit">Apply Filter</button>
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                   $("#id_Name").autocomplete({
+                        source: "getN/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                });
+                    $("#id_Admin").autocomplete({
+                        source: "getAD/",
+                        select:function(event, ui){
+                            AutoCompleteSelectHandler(event, ui)
+                        },
+                        minLength: 1,
+                    });
+                function AutoCompleteSelectHandler(event, ui)
+                {
+                    var selectedObj = ui.item;
+                }
+            </script>
+        """),
+                    #'Name',
+                    #'Admin'
+                    #Submit('submit', 'Apply Filter'),
     )
+
 
 class CustomerListFormHelper(FormHelper):    
     form_method = 'GET'
@@ -391,17 +422,71 @@ class POCListFormHelper(FormHelper):
     field_class = 'col-lg-6'
     label_class = 'col-lg-3'
     layout = Layout(
-         Fieldset(
-                    '<i class="fa fa-search"></i> Search Point of Contact Records',       
-                    InlineField('FName'),
-                    InlineField('LName'),
-                    'PartnerID',
-                    'ContractID',
-                    'CustomerID',
-                    'Address',
-                    'Phone',
-                    'Email',
 
-                ),
-              Submit('submit', 'Apply Filter'),
+        Fieldset('<i class="fa fa-search"></i> Search POC Records'),
+
+        HTML("""
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <div class="ui-widget">
+            {{filter.form.as_p}}
+            <button type="submit">Apply Filter</button>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+               $("#id_FName").autocomplete({
+                    source: "getFN/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+               $("#id_LName").autocomplete({
+                    source: "getLN/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+               $("#id_Address").autocomplete({
+                    source: "getA/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+                $("#id_Phone").autocomplete({
+                    source: "getP/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+                $("#id_Email").autocomplete({
+                    source: "getE/",
+                    select:function(event, ui){
+                        AutoCompleteSelectHandler(event, ui)
+                    },
+                    minLength: 1,
+                });
+            });
+            function AutoCompleteSelectHandler(event, ui)
+            {
+                var selectedObj = ui.item;
+            }
+        </script>
+    """),
+                    #InlineField('FName'),
+                    #InlineField('LName'),
+                    #'PartnerID',
+                    #'ContractID',
+                    #'CustomerID',
+                    #'Address',
+                    #'Phone',
+                    #'Email',
+
+
+              #Submit('submit', 'Apply Filter'),
     )
+
