@@ -22,12 +22,15 @@ class EmployeeListFilter(django_filters.FilterSet):
     date_between = django_filters.DateFromToRangeFilter(name='DateOfHire',
                                                              label='Date of Hire (Between)')
     order_by = ['pk']
-class GGListFilter(django_filters.FilterSet):
 
+class GGListFilter(django_filters.FilterSet):
+  Name = django_filters.CharFilter(lookup_expr='iexact')
+  Admin = django_filters.CharFilter(lookup_expr='iexact')
   class Meta:
     model = GoogleGroup
-    fields =  '__all__'
-    order_by = ['pk']
+    fields = ['Name','Admin']
+    #fields =  '__all__'
+    #order_by = ['pk']
 
 class CustomerListFilter(django_filters.FilterSet):
 
@@ -81,8 +84,13 @@ class DepartmentListFilter(django_filters.FilterSet):
     order_by = ['pk']
 
 class POCListFilter(django_filters.FilterSet):
-
+  FName = django_filters.CharFilter(lookup_expr='iexact')
+  LName = django_filters.CharFilter(lookup_expr='iexact')
+  Address = django_filters.CharFilter(lookup_expr='iexact')
+  Phone = django_filters.CharFilter(lookup_expr='iexact')
+  Email = django_filters.CharFilter(lookup_expr='iexact')
   class Meta:
     model = POC
-    fields =  '__all__'
-    order_by = ['pk']
+    fields = ['PartnerID','ContractID','CustomerID','FName','LName','Address','Phone','Email']
+    #fields =  '__all__'
+    #order_by = ['pk']
