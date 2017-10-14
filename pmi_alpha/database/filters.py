@@ -3,6 +3,7 @@
 
 import django_filters
 from .models import *
+from django import forms
 
 
 class VendorListFilter(django_filters.FilterSet):
@@ -34,19 +35,43 @@ class CustomerListFilter(django_filters.FilterSet):
     model = Customer
     fields =  '__all__'
     order_by = ['pk']
-class ContractListFilter(django_filters.FilterSet):
 
+class ContractListFilter(django_filters.FilterSet):
+  IssuingCompany = django_filters.CharFilter(lookup_expr='iexact')
+  ContractNumber = django_filters.CharFilter(lookup_expr='iexact')
+  DocumentLocation = django_filters.CharFilter(lookup_expr='iexact')
+  OrganizationType = django_filters.CharFilter(lookup_expr='iexact')
+  POC = django_filters.CharFilter(lookup_expr='iexact')
+  Status = django_filters.CharFilter(lookup_expr='iexact')
+  Comments = django_filters.CharFilter(lookup_expr='iexact')
+  EffectiveDate = django_filters.DateFilter(lookup_expr='exact')
+  EndDate = django_filters.DateFilter(lookup_expr='exact')
+  StartDate = django_filters.DateFilter(lookup_expr='exact')
   class Meta:
     model = Contract
-    fields =  '__all__'
-    order_by = ['pk']
+    fields = ['CustomerID','IssuingCompany','ContractNumber','DocumentLocation','OrganizationType','POC','Status',
+              'Comments','EffectiveDate','EndDate','StartDate']
+    #fields = '__all__'
+    #order_by = ['pk']
 
 class PartnerListFilter(django_filters.FilterSet):
-
-  class Meta:
-    model = Partner
-    fields =  '__all__'
-    order_by = ['pk']
+    LegalName = django_filters.CharFilter(lookup_expr='iexact')
+    Address = django_filters.CharFilter(lookup_expr='iexact')
+    City = django_filters.CharFilter(lookup_expr='iexact')
+    ZipCode = django_filters.CharFilter(lookup_expr='iexact')
+    State = django_filters.CharFilter(lookup_expr='iexact')
+    Country = django_filters.CharFilter(lookup_expr='iexact')
+    Phone = django_filters.CharFilter(lookup_expr='iexact')
+    Fax = django_filters.CharFilter(lookup_expr='iexact')
+    Email = django_filters.CharFilter(lookup_expr='iexact')
+    DBA = django_filters.CharFilter(lookup_expr='iexact')
+    DUNs = django_filters.CharFilter(lookup_expr='iexact')
+    POC = django_filters.CharFilter(lookup_expr='iexact')
+    TIN = django_filters.CharFilter(lookup_expr='iexact')
+    Type = django_filters.CharFilter(lookup_expr='iexact')
+    class Meta:
+        model = Partner
+        fields = ['LegalName', 'Address', 'City', 'ZipCode', 'State', 'Country', 'Phone','Fax', 'Email', 'DBA', 'DUNs','POC','TIN','Type']
 
 class DepartmentListFilter(django_filters.FilterSet):
 
